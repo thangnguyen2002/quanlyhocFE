@@ -22,7 +22,8 @@ import avatar2 from 'assets/images/users/avatar-2.png';
 import avatar3 from 'assets/images/users/avatar-3.png';
 import avatar4 from 'assets/images/users/avatar-4.png';
 import { CssVarsProvider } from '@mui/joy/styles';
-import ListNhanVien from './ListNhanVien';
+import ListNhanVien from './ListChucVu';
+import ListChucVu from './ListChucVu';
 
 // avatar style
 const avatarSX = {
@@ -48,14 +49,14 @@ export default function DashboardDefault() {
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
       {/* row 1 */}
       <Grid item xs={12} sx={{ mb: -2.25 }}>
-        <Typography variant="h5">Danh sách nhân viên</Typography>
+        <Typography variant="h5">Danh Sách Chức Vụ</Typography>
       </Grid>
       
       <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
 
       {/* row 2 */}
-      <Grid item xs={12} sx={{ mb: -2.25 }}>
-        <ListNhanVien/>
+      <Grid item xs={12}>
+        <ListChucVu/>
       </Grid>
     </Grid>
   );

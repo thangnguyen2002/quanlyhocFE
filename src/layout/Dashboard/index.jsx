@@ -32,7 +32,11 @@ export default function DashboardLayout() {
     <Box sx={{ display: 'flex', width: '100%' }}>
       <Header />
       <Drawer />
-      <Box component="main" sx={{ width: 'calc(100% - 260px)', flexGrow: 1, p: { xs: 2, sm: 3 } }}>
+      <Box component="main" 
+      sx={{ width: 'calc(100% - 260px)', // Đổi kích thước main box
+      flexGrow: 1, p: { xs: 2, sm: 3 },
+      // marginLeft: '50px'  // Thêm margin left để tăng khoảng cách với drawer
+      }}>
         <Toolbar />
         <Breadcrumbs navigation={navigation} title />
         <Outlet />

@@ -1,35 +1,40 @@
 import React, { useState } from 'react';
 import { Button, Modal, Flex } from 'antd';
-import { Checkbox, Form, Input } from 'antd';
-
-const onFinish = (values) => {
-  console.log('Success:', values);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log('Failed:', errorInfo);
-};
+import { Form, Input } from 'antd';
 
 const AddBtn = (props) => {
-  const { lableName, name, msg, apiPost, inputsNo } = props;
-  const [fieldData, setFieldData] = useState('');
+  const { lableNames, names, msgs, apiPost, inputsNo, handleUpdateList } = props;
+  const [fieldData, setFieldData] = useState({});
   const [openAdd, setOpenAdd] = useState(false);
+
   const showModalAdd = () => {
     setOpenAdd(true);
   };
+
   const handleOkAdd = async () => {
     try {
       const result = await apiPost(fieldData);
       console.log('Success:', result);
-      // Xử lý kết quả trả về, ví dụ: thông báo thành công, làm sạch form, v.v.
+      if (handleUpdateList) {
+        handleUpdateList(result); // Gọi hàm onSuccess và truyền dữ liệu mới vào
+      }
+      setFieldData({}); // Reset field data sau khi thêm thành công
     } catch (error) {
       console.error('Error:', error);
-      // Xử lý lỗi
     }
 
     setOpenAdd(false);
   };
+
   const handleCancelAdd = () => {
     setOpenAdd(false);
+  };
+
+  const handleInputChange = (e, name) => {
+    setFieldData({
+      ...fieldData,
+      [name]: e.target.value,
+    });
   };
 
   return (
@@ -44,34 +49,33 @@ const AddBtn = (props) => {
         <Form
           name="basic"
           labelCol={{
-            span: 8
+            span: 8,
           }}
           wrapperCol={{
-            span: 16
+            span: 16,
           }}
           style={{
-            maxWidth: 600
+            maxWidth: 600,
           }}
           initialValues={{
-            remember: true
+            remember: true,
           }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
           {Array.from({ length: inputsNo }, (_, index) => (
             <Form.Item
-            label={lableName}
-            name={name}
-            rules={[
-              {
-                required: true,
-                message: msg
-              }
-            ]}
-          >
-            <Input onChange={(e) => setFieldData(e.target.value)} />
-          </Form.Item>
+              key={index}
+              label={lableNames[index]}
+              name={names[index]}
+              rules={[
+                {
+                  required: true,
+                  message: msgs[index],
+                },
+              ]}
+            >
+              <Input onChange={(e) => handleInputChange(e, names[index])} />
+            </Form.Item>
           ))}
         </Form>
       </Modal>

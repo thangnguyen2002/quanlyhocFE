@@ -13,18 +13,18 @@ const MainRoutes = {
   element: <Dashboard />,
   children: [
     {
-      path: '/',
+      path: '/chucvu',
       element: <DashboardDefault />
     },
-    {
-      path: 'admin',
-      children: [
-        {
-          path: 'nhanvien',
-          element: <DashboardDefault />
-        }
-      ]
-    }
+    // {
+    //   path: 'chucvu',
+    //   children: [
+    //     {
+    //       path: '/',
+    //       element: <DashboardDefault />
+    //     }
+    //   ]
+    // }
   ]
 };
 

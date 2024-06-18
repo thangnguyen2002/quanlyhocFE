@@ -9,15 +9,23 @@ const icons = {
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
 
 const dashboard = {
-  id: 'group-dashboard',
-  title: 'Navigation',
+  id: 'admin',
+  title: '',
   type: 'group',
   children: [
     {
-      id: 'dashboard',
-      title: 'Dashboard',
+      id: 'nhanvien',
+      title: 'Quản lý nhân viên',
       type: 'item',
-      url: '/dashboard/default',
+      url: '/admin/nhanvien',
+      icon: icons.DashboardOutlined,
+      breadcrumbs: false
+    },
+    {
+      id: 'giangvien',
+      title: 'Quản lý giảng viên',
+      type: 'item',
+      url: '/admin/giangvien',
       icon: icons.DashboardOutlined,
       breadcrumbs: false
     }

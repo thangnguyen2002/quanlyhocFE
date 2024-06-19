@@ -40,7 +40,8 @@ const AddBtn = (props) => {
   return (
     <>
       <Flex gap="small">
-        <Button type="primary" onClick={showModalAdd}>
+        <Button style={{'background': '#4dc972', 'color': 'white', 
+          'border': 'none', 'outline':'none', 'padding': '5px 20px'}} onClick={showModalAdd}>
           Thêm
         </Button>
       </Flex>

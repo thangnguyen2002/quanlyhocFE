@@ -9,15 +9,15 @@ const icons = {
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
 
 const dashboard = {
-  id: 'admin',
+  id: 'dashboard',
   title: '',
   type: 'group',
   children: [
     {
-      id: 'nhanvien',
-      title: 'Quản lý nhân viên',
+      id: 'chucvu',
+      title: 'Quản lý chức vụ',
       type: 'item',
-      url: '/admin/nhanvien',
+      url: '/chucvu',
       icon: icons.DashboardOutlined,
       breadcrumbs: false
     },

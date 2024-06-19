@@ -33,3 +33,12 @@ export async function DeleteChucVu(id) {
   const response = await axios.delete(`${endpoints.chucvu}/${id}`);
   return response.data;
 }
+
+export async function SearchChucVu(data) {
+  const response = await axios.post(`${endpoints.chucvu}/search`, data, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  return response.data;
+}

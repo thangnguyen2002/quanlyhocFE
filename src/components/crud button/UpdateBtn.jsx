@@ -40,7 +40,7 @@ const UpdateBtn = (props) => {
   return (
     <>
       <Flex gap="small">
-        <Button type="primary" onClick={showModalUpdate}>
+        <Button type="primary" green onClick={showModalUpdate}>
           Cập nhật
         </Button>
       </Flex>

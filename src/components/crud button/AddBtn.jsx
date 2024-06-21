@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, Flex } from 'antd';
-import { Form, Input } from 'antd';
+import { Form, Input, message } from 'antd';
 
 const AddBtn = (props) => {
   const { lableNames, names, msgs, apiPost, inputsNo, handleUpdateList } = props;
@@ -19,8 +19,10 @@ const AddBtn = (props) => {
         handleUpdateList(result); // Gọi hàm onSuccess và truyền dữ liệu mới vào
       }
       setFieldData({}); // Reset field data sau khi thêm thành công
+      message.success('Thêm thành công');
     } catch (error) {
       console.error('Error:', error);
+      message.error('Thêm thất bại');
     }
 
     setOpenAdd(false);

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080/api/v1';
+const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
 
 export const endpoints = {
-  chucvu: `${BASE_URL}/chucvu`
+  chucvu: `${BASE_API_URL}/chucvu`
 };
 
 export async function PostChucVu(data) {
@@ -17,6 +17,11 @@ export async function PostChucVu(data) {
 
 export async function GetAllChucVu() {
   const response = await axios.get(endpoints.chucvu);
+  return response.data;
+}
+
+export async function GetChucVuById(id) {
+  const response = await axios.get(`${endpoints.chucvu}/${id}`);
   return response.data;
 }
 

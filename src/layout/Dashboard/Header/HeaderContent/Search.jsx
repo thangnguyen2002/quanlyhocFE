@@ -4,8 +4,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Box from '@mui/material/Box';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
-import { SearchChucVu } from 'api/LinhVuc/apiChucVu';
-import ListChucVu from 'pages/dashboard/ListChucVu';
+import { SearchChucVu } from 'api/apiChucVu';
+import ListChucVu from 'pages/dashboard/chucvu/ListChucVu';
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState('');

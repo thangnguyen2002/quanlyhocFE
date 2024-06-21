@@ -6,22 +6,22 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import CRUDButton from 'components/crud button/CRUDButton';
-import { GetAllChucVu, PostChucVu } from 'api/LinhVuc/apiChucVu';
+import { GetAllLinhVuc, PostLinhVuc } from 'api/apiLinhVuc';
 import { useState, useEffect } from 'react';
 import AddBtn from 'components/crud button/AddBtn';
+import CRUDLinhVuc from 'components/crud button/crud-by-function/CRUDLinhVuc';
 
-export default function ListChucVu() {
+export default function ListLinhVuc() {
   const [linhVuc, setLinhVuc] = useState([]);
   const [error, setError] = useState(null);
 
-  const lableNames = ['Tên Chức Vụ', 'Trạng Thái'];
-  const names = ['ten_chuc_vu', 'trang_thai'];
-  const msgs = ['Xin hãy điền tên chức vụ', 'Xin hãy điền tên trạng thái'];
+  const lableNames = ['Tên Lĩnh Vực'];
+  const names = ['ten_linh_vuc'];
+  const msgs = ['Xin hãy điền tên lĩnh vực'];
 
   const fetchData = async () => {
     try {
-      const data = await GetAllChucVu();
+      const data = await GetAllLinhVuc();
       console.log('data: ', data);
       setLinhVuc(data);
     } catch (error) {
@@ -45,24 +45,22 @@ export default function ListChucVu() {
   return (
     <>
     <div style={{'marginBottom': '12px'}}>
-      <AddBtn lableNames={lableNames} names={names} msgs={msgs} apiPost={PostChucVu} inputsNo={2} handleUpdateList={handleUpdateList} />
+      <AddBtn lableNames={lableNames} names={names} msgs={msgs} apiPost={PostLinhVuc} inputsNo={1} handleUpdateList={handleUpdateList} />
     </div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell align="right">ID</TableCell>
-              <TableCell align="right">Tên Chức Vụ</TableCell>
-              <TableCell align="right">Trạng Thái</TableCell>
+              <TableCell align="right">Tên Lĩnh Vực</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {linhVuc.map((row) => (
-              <TableRow key={row.maChucVu} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell align="right">{row.maChucVu}</TableCell>
-                <TableCell align="right">{row.tenChucVu}</TableCell>
-                <TableCell align="right">{row.trangThai}</TableCell>
-                <CRUDButton handleUpdateList={handleUpdateList} id={row.maChucVu} />
+              <TableRow key={row.maLinhVuc} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell align="right">{row.maLinhVuc}</TableCell>
+                <TableCell align="right">{row.tenLinhVuc}</TableCell>
+                <CRUDLinhVuc handleUpdateList={handleUpdateList} id={row.maLinhVuc} />
               </TableRow>
             ))}
           </TableBody>
